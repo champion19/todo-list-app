@@ -23,6 +23,10 @@
             "assets": [
               "src/favicon.ico",
               "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+
             ]
           },
           "configurations": {
@@ -77,19 +81,11 @@
               "zone.js",
               "zone.js/testing"
             ],
+
             "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/favicon.ico",
               "src/assets"
-            ],
-
-               "styles": [
-              "node_modules/material-design-icons/iconfont/material-icons.css",
-    "node_modules/materialize-css/dist/css/materialize.min.css",
-    "src/styles.css"
-            ],
-             "scripts": [
-               "node_modules/materialize-css/dist/js/materialize.min.js"
             ]
           }
         }
