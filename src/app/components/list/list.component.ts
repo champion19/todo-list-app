@@ -14,6 +14,7 @@ export class ListComponent implements OnInit {
 
   ngOnInit(){
     this.getIsCompleted();
+
   }
 
   getIsCompleted(): Todo[] {

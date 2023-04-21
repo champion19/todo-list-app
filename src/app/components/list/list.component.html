@@ -1,31 +1,38 @@
-<div class="w-full p-10">
-  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" #f="ngForm" (ngSubmit)="onSubmit(f)">
-    <div class="mb-6 ">
+<div class="w-full p-5">
+  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
       <label class="block text-gray-700 text-sm font-bold mb-2" for="Tareas">
         Tareas
       </label>
       <input
-        class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline block-appearance"
-        id="Tareas" type="password" placeholder="Tu tarea" ngModel>
-    </div>
+        class="border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline block-appearance"
+        id="title" name="title" type="text" placeholder="Tu tarea" ngModel>
 
-    <div class="flex items-center justify-between">
-      <button
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
-        type="button">
-        Revisar
-      </button>
-    </div>
-  </form>
+      <div class="flex float-end mt-2">
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline "
+          type="submit">
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
+<div class="w-full p-5 flex justify-center items-center">
+  <div class="w-full bg-white flex justify-center items-center shadow-md rounded text-black">
+    <div class="flex justify-center items-center" *ngIf="!todos?.length;else listContent">
+      <span class="text-lg">No cuentas con tareas pendientes</span>
+    </div>
+    <ng-template #listContent>
+      <div class="">
+        <ul *ngFor="let item of todos" class="text-black-100 font-bold highlight">
+          <li class="block w-full cursor-pointer rounded-lg p-4 transition duration-500 hover:bg-neutral-100 hover:text-neutral-500 focus:bg-neutral-100 focus:text-neutral-500 focus:ring-0 dark:hover:bg-neutral-600 dark:hover:text-neutral-200 dark:focus:bg-neutral-600 dark:focus:text-neutral-200"
+              [ngClass]="{'line-through text-green-500': item.isComplete}">
+              <input type="checkbox" class="form-checkbox h-5 w-5 text-gray-600" name="{{item.id}}" (click)="this.onComplete(item.id)" *ngIf="!item.isComplete"/> {{item.title}}
+            </li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+</div>
